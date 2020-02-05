@@ -1,5 +1,6 @@
+import java.util.*;
 public interface SearchStrategy {
-	int[][] finalCoordinates = new int[10][10];
-	public void performSearch(int[][] grid);
-	
+	List <String> carrierCoord = new ArrayList<>();
+	List <String> submarineCoord = new ArrayList<>();
+	public void performSearch(int[][] game);
 }
