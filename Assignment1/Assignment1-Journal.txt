@@ -1,0 +1,3 @@
+Assignment -1
+
+	The use of Strategy search in this battleship program will make the program more efficient and dynamic as here we are  declaring a searching method without any implementation in the interface and we are inheriting it and  implementing with different searching strategies and the other advantage of design pattern is we can remove old strategies and implement any number of new strategies  without changing the existing code. It also has a disadvantage that is  each strategies is objectively better than others so choosing the best one that is suitable for you requirements will be tough.
