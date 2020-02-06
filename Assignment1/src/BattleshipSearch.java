@@ -4,8 +4,8 @@ import java.util.*;
 
 public class BattleshipSearch {
 	static SearchStrategy searchStrategy;	
-	int carrier = 1;
-	int submarine = 2;
+	int carrierCheck = 1;
+	int submarineCheck = 2;
 	int gamecount;
 	int i;
 	int noOfGame;
@@ -13,7 +13,7 @@ public class BattleshipSearch {
 	Map<Integer, int[][]> mymap = new HashMap<Integer, int[][]>();
 	
 	public void readInputFile(){
-		mymap = readcoordinateFile("src//input.txt");
+		mymap = readCoordinateFile("src//input.txt");
 	}
 
 	public void setStrategy(SearchStrategy strategy){
@@ -24,7 +24,7 @@ public class BattleshipSearch {
 		noOfGame = n;
 	}		
 	
-	public Map<Integer, int[][]> readcoordinateFile(String fileName){
+	public Map<Integer, int[][]> readCoordinateFile(String fileName){
 		  try {
 			  FileReader inputFile = new FileReader(fileName);
 			  BufferedReader reader = new BufferedReader(inputFile);
@@ -39,34 +39,15 @@ public class BattleshipSearch {
 						int x_cord = Integer.parseInt(tokenizer1.nextToken());
 						int y_cord = Integer.parseInt(tokenizer1.nextToken());
 						if(i<5) {
-							grid[x_cord][y_cord] = carrier;
-						}
+							grid[x_cord][y_cord] = carrierCheck;
+						}	
 						else {
-							grid[x_cord][y_cord] = submarine;
+							grid[x_cord][y_cord] = submarineCheck;
 						}
 						i++;
 			  }
 					mymap.put(gamecount,grid);
 					gamecount++;
-					/*int[][] searchGrid = mymap.get(gamecount);
-					gamecount++;
-					for (int p = 0; p < searchGrid.length; p++)
-					{
-						for (int q = 0; q < searchGrid.length; q++)
-						{
-							if (searchGrid[p][q] == 1)
-							{
-								System.out.println("carrier"+p+","+q);
-							}
-							else if (searchGrid[p][q] == 2)
-							{
-								System.out.println("submarine"+p+","+q);
-							}
-								
-						}
-					}*/
-					/*for( int j = 0; j < grid.length; j++ )
-						   Arrays.fill( grid[j], 0);*/
 			  }
 			  reader.close();
 			  }
@@ -78,6 +59,7 @@ public class BattleshipSearch {
 	
 	public void callSearch() {
 			searchStrategy.performSearch(mymap.get(noOfGame));
+			searchStrategy.display();
 	}	
 	
 	public static void main(String[] args) {
@@ -91,8 +73,8 @@ public class BattleshipSearch {
 		battleship.callSearch();
 		battleship.setStrategy(new RandomSearchStrategy());
 		battleship.callSearch();
-			//battleship.setStrategy(new StrategicSearchStrategy());
-			//battleship.performSearch();
+		battleship.setStrategy(new StrategicSearchStrategy());
+		battleship.callSearch();
 		}
-	}	
+	}
 }

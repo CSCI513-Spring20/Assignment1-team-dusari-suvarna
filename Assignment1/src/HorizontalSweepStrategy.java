@@ -17,7 +17,14 @@ public class HorizontalSweepStrategy implements SearchStrategy{
 						noOfIteratings++;
 					}
 		}
-		System.out.println("Number of cells Searched:"+noOfIteratings);
-		new PrintResult(carrierCoord,submarineCoord);
+		System.out.println("Number of Cells searched:"+noOfIteratings);
+}
+	public void display(){
+		System.out.print("Carrier found:"+carrierCoord.get(0)+"to"+carrierCoord.get(4)+"");
+		//System.out.println("LIST1:"+carrier);
+		//System.out.println("LIST2:"+submarine);
+		System.out.println("Submarine found:"+submarineCoord.get(0)+"to"+submarineCoord.get(2));
+		carrierCoord.clear();
+		submarineCoord.clear();	
 }
 }
